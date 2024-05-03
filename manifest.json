@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Notas UPV",
+  "version": "1.0",
+  "description": "Adaptación de la extensión 'UPV Notas' de Chrome para Firefox. \n\nEsta extensión mejora la visualización de las calificaciones en el apartado de notas de la Intranet de la UPV.",
+  "icons": {
+    "48": "icons/upv_48.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://intranet.upv.es/pls/soalu/sic_asi.listado_notas_asi*"
+      ],
+      "js": [
+        "prettify_marks.js"
+      ]
+    }
+  ]
+}
