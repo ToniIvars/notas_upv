@@ -35,7 +35,7 @@ function changeTable(elements) {
 }
 
 function setupNotasUPVElement() {
-  document.querySelector('.upv_containercontent').insertAdjacentHTML('beforebegin', notasUPVElement)
+  table.insertAdjacentHTML('beforebegin', notasUPVElement)
   document.querySelector('#notasupv-check').addEventListener('change', event => {
     if (event.target.checked) {
       changeTable(sorted_elements)
@@ -45,7 +45,16 @@ function setupNotasUPVElement() {
   })
 }
 
+function modifyCSS() {
+  if (window.navigator.userAgent.indexOf('Android') != -1) {
+    document.querySelector('#contenido .cabpagina').style.paddingLeft = '10px'
+    document.querySelector('#contenido .container').style.marginLeft = '10px'
+    document.querySelector('#contenido .container').style.width = '90vw'
+  }
+}
+
 function start() {
+  modifyCSS()
   setupNotasUPVElement()
   changeTable(sorted_elements)
   console.info('Notas UPV activo')
