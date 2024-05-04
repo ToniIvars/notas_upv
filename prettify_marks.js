@@ -1,5 +1,3 @@
-const notasUPVElement = '<div style="text-align: center; margin-bottom: 6px;"><span style="color: #ff524e;">Notas UPV</span><input type="checkbox" id="notasupv-check" checked></div>'
-
 const table = document.querySelector('table')
 const trs = [...table.querySelector('tbody').querySelectorAll('tr')]
 const { elements, sorted_elements } = getElements()
@@ -35,14 +33,32 @@ function changeTable(elements) {
 }
 
 function setupNotasUPVElement() {
-  table.insertAdjacentHTML('beforebegin', notasUPVElement)
-  document.querySelector('#notasupv-check').addEventListener('change', event => {
+  //  <div style="text-align: center; margin-bottom: 6px;">
+  //    <span style="color: #ff524e;">Notas UPV</span>
+  //    <input type="checkbox" checked>
+  //  </div>
+
+  let notasUPVElement = document.createElement('div')
+  notasUPVElement.setAttribute('style', 'text-align: center; margin-bottom: 6px;')
+
+  let span = document.createElement('span')
+  span.textContent = 'Notas UPV'
+  span.style.color = '#ff524e'
+
+  let check = document.createElement('input')
+  check.setAttribute('type', 'checkbox')
+  check.setAttribute('checked', true)
+  
+  check.addEventListener('change', event => {
     if (event.target.checked) {
       changeTable(sorted_elements)
     } else {
       changeTable(elements)
     }
   })
+
+  notasUPVElement.appendChild(span); notasUPVElement.appendChild(check)
+  table.insertAdjacentElement('beforebegin', notasUPVElement)
 }
 
 function modifyCSS() {
