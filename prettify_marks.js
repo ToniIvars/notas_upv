@@ -7,7 +7,7 @@ function getElements() {
     let tds = tr.querySelectorAll('td')
     let name = tds[0].textContent
     let mark = tds[1].textContent.replace(',', '.')
-    mark = parseFloat(mark.startsWith('.') ? '0' + mark : mark)
+    mark = mark.startsWith('.') ? '0' + mark : mark
 
     return { name, mark }
   })
